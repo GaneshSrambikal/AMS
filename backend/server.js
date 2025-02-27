@@ -1,10 +1,8 @@
-const express = require('express');
+const app = require('./app');
+const connectDB = require('./config/db');
 
-const app = express();
 
-app.get('/', (req, res) => {
-  return res.json({ message: 'hello world' });
-});
+// connectDB();
 
 app.listen(5000, () => {
   console.log(`listening at 5000`);

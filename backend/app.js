@@ -1,5 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
+const authRouter = require('./routes/auth/authRoutes.js');
+const adminRouter = require('./routes/users/adminRoutes.js');
 const app = express();
 
 // middleware setup
@@ -14,5 +16,11 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({ message: { author: 'Ganesh Srambikal' } });
 });
+
+// auth Routes
+app.use('/api/auth', authRouter);
+
+// ADMIN ROUTES
+app.use('/api/admin', adminRouter);
 
 module.exports = app;

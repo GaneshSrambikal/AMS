@@ -9,7 +9,7 @@ exports.checkIn = async (req, res) => {
   try {
     const attendanceExist = await Attendance.findOne({
       user: req.user.id,
-      date: today,
+      date: today,  // checks for today's check in
     });
     if (attendanceExist) {
       return res.status(400).json({ message: 'Already checked in.' });

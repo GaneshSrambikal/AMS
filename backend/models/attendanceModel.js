@@ -28,11 +28,11 @@ const AttendanceSchema = new mongoose.Schema(
 
 // calculate the work hours before save on checkout
 AttendanceSchema.pre('save', function (next) {
-  if (this.isModified('checkOutTime')) {
+  if (this.isModified('checkOutTime') || this.isModified('checkInTime')) {
     const diffHrs = parseFloat(
       ((this.checkOutTime - this.checkInTime) / (1000 * 60 * 60)).toFixed(2)
     );
-   
+
     this.workHours = diffHrs;
   }
   next();

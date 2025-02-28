@@ -34,6 +34,16 @@ exports.protect = async (req, res, next) => {
   }
 };
 
+// Employee Middleware
+exports.employeeOnly = async (req, res, next) => {
+  if (req.user && req.user.role === 'employee') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access Denied. Only for Employees.' });
+    return;
+  }
+};
+
 // Admin Middleware
 exports.adminOnly = async (req, res, next) => {
   if (req.user && req.user.role === 'admin') {

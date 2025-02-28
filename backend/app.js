@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const authRouter = require('./routes/auth/authRoutes.js');
 const adminRouter = require('./routes/users/adminRoutes.js');
+const attendanceRouter = require('./routes/attendance/attendanceRoutes.js');
 const app = express();
 
 // middleware setup
@@ -22,5 +23,8 @@ app.use('/api/auth', authRouter);
 
 // ADMIN ROUTES
 app.use('/api/admin', adminRouter);
+
+// Attendance routes for employees
+app.use('/api/attendance', attendanceRouter);
 
 module.exports = app;

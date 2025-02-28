@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const authRouter = require('./routes/auth/authRoutes.js');
 const adminRouter = require('./routes/users/adminRoutes.js');
+const userRouter = require('./routes/users/userRoutes.js');
 const attendanceRouter = require('./routes/attendance/attendanceRoutes.js');
 const app = express();
 
@@ -21,10 +22,12 @@ app.get('/api', (req, res) => {
 // auth Routes
 app.use('/api/auth', authRouter);
 
-// ADMIN ROUTES
+// ADMIN ROUTES (all user specific routes related to admin)
 app.use('/api/admin', adminRouter);
 
-// Attendance routes for employees
+// Attendance routes for employees to check in/out only
 app.use('/api/attendance', attendanceRouter);
 
+// User ROUTES (all user specific routes related to users)
+app.use('/api/users', userRouter);
 module.exports = app;

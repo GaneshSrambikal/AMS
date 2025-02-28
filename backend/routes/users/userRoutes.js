@@ -1,0 +1,20 @@
+const {
+  getUserAttendanceHistory,
+} = require('../../controllers/userController');
+const {
+  protect,
+  employeeOnly,
+} = require('../../middlewares/auth/authMiddleware');
+
+const router = require('express').Router();
+
+// get attendance history
+// route GET /api/users/attendance/history
+router.get(
+  '/attendance/history',
+  protect,
+  employeeOnly,
+  getUserAttendanceHistory
+);
+
+module.exports = router;

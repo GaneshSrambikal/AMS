@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const authRouter = require('./routes/auth/authRoutes.js');
 const adminRouter = require('./routes/users/adminRoutes.js');
 const userRouter = require('./routes/users/userRoutes.js');
@@ -9,6 +10,7 @@ const app = express();
 // middleware setup
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 // Routes
 app.get('/', (req, res) => {

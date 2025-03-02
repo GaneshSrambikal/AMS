@@ -3,6 +3,7 @@ import AuthContext from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import FeatureCard from '../components/landing/FeatureCard';
 import Step from '../components/landing/Step';
+import { FaGithub } from 'react-icons/fa';
 
 const LandingPage = () => {
   const { user, loading } = useContext(AuthContext);
@@ -16,10 +17,13 @@ const LandingPage = () => {
   return (
     <main className='bg-gray-100 text-gray-900 min-h-screen'>
       {/* Hero Section */}
-      <section className='relative h-screen flex flex-col items-center justify-center text-center bg-linear-to-r from-cyan-500 to-blue-500 text-white px-6'>
+      <section
+        id='landing-hero'
+        className='relative h-screen flex flex-col items-center justify-center text-center bg-linear-to-r from-cyan-500 to-blue-500 text-white px-6'
+      >
         <h1 className='text-5xl font-extrabold leading-tight'>AMS</h1>
         <p className='mt-4 text-lg max-w-2xl'>
-        Efficient and hassle-free attendance management.
+          Efficient and hassle-free attendance management.
         </p>
         <button
           onClick={() =>
@@ -73,6 +77,16 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className='py-8 bg-gray-900 text-white text-center'>
         <p>© {new Date().getFullYear()} AMS. All rights reserved.</p>
+        <div className='flex justify-center mt-2'>
+          <FaGithub size={24} />
+          <Link
+            to='https://github.com/GaneshSrambikal/AMS'
+            target='_blank'
+            className='ml-3'
+          >
+            GaneshSrambikal
+          </Link>
+        </div>
       </footer>
     </main>
   );

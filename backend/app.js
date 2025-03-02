@@ -5,6 +5,7 @@ const authRouter = require('./routes/auth/authRoutes.js');
 const adminRouter = require('./routes/users/adminRoutes.js');
 const userRouter = require('./routes/users/userRoutes.js');
 const attendanceRouter = require('./routes/attendance/attendanceRoutes.js');
+const notificationRouter = require('./routes/notification/notificationRoute.js');
 const { corsOrigins } = require('./utils/corsOrigin.js');
 const app = express();
 
@@ -33,4 +34,7 @@ app.use('/api/attendance', attendanceRouter);
 
 // User ROUTES (all user specific routes related to users)
 app.use('/api/users', userRouter);
+
+// Notification Routes
+app.use('/api/notifications', notificationRouter);
 module.exports = app;

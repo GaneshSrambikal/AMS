@@ -7,7 +7,18 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <nav className='bg-linear-to-r from-cyan-500 to-blue-500 text-white p-4 flex justify-between items-center shadow-md fixed top-0 left-0 w-full'>
-      <h1 className='text-xl font-bold'>AMS</h1>
+      <Link to='/'>
+        <h1
+          className='text-xl font-bold'
+          onClick={() =>
+            document
+              .getElementById('landing-hero')
+              .scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          AMS
+        </h1>
+      </Link>
       {user ? (
         <div className='flex items-center space-x-4'>
           <span className='text-lg'>
@@ -15,7 +26,7 @@ const Navbar = () => {
             {user?.role === 'admin' && ' (Admin)'}
           </span>
           {user.role === 'admin' && (
-            <Link to='/admin/users' className='bg-yellow-500 px-4 py-2 rounded'>
+            <Link to='/admin/users' className='bg-fuchsia-700 px-4 py-2 rounded'>
               Manage Users
             </Link>
           )}
@@ -24,7 +35,7 @@ const Navbar = () => {
               logout();
               navigate('/login');
             }}
-            className='bg-red-500 px-4 py-2 rounded hover:bg-red-600'
+            className='bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-500'
           >
             Logout
           </button>
@@ -33,7 +44,7 @@ const Navbar = () => {
         <div>
           <button
             onClick={() => navigate('/login')}
-            className='bg-red-500 px-4 py-2 rounded hover:bg-red-600'
+            className='bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-600'
           >
             login
           </button>

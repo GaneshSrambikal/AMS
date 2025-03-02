@@ -47,12 +47,6 @@ Employees can login and check-in/check-out there attendances.
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
-
-`ANOTHER_API_KEY`
-
-#### Set your .env variable key and value
-
 _for backend_
 
 ```code
@@ -83,7 +77,7 @@ VITE_API_BASE_URL=
   npm install
 ```
 
-#### Note: If dependencies error occurs use (as react: v^19.0.0) is used.
+#### Note: If dependencies error occurs (As project started with v19. then later downgraded to v18).
 
 ```bash
  npm install --legacy-peer-deps

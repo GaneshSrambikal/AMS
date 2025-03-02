@@ -1,0 +1,26 @@
+name: Clear MongoDB Collection
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at 12:00 AM UTC (Adjust if needed)
+  workflow_dispatch: # Allows manual execution
+
+jobs:
+  clear-database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install MongoDB Client
+        run: sudo apt-get install -y mongodb-clients
+
+      - name: Clear MongoDB Collection
+        run: |
+          mongo "$MONGO_URI" --eval 'db.notifications.deleteMany({})'
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FaBars,
   FaTachometerAlt,
@@ -8,6 +8,8 @@ import {
 } from 'react-icons/fa';
 
 const Sidebar = ({ onLogout, collapsed, setCollapsed }) => {
+  const location = useLocation();
+  console.log('location', location.pathname);
   return (
     <div
       className={`mt-18 h-[90vh] bg-gray-900 text-white fixed left-0 top-0 z-50 ${
@@ -25,21 +27,27 @@ const Sidebar = ({ onLogout, collapsed, setCollapsed }) => {
       <nav className='flex flex-col flex-grow'>
         <Link
           to='/dashboard'
-          className='p-4 flex items-center hover:bg-gray-700'
+          className={`p-4 flex items-center hover:bg-gray-700 ${
+            location.pathname === '/dashboard' && 'bg-gray-700'
+          }`}
         >
           <FaTachometerAlt size={20} className='mr-3' />
           {!collapsed && <span>Dashboard</span>}
         </Link>
         <Link
           to='/admin/users'
-          className='p-4 flex items-center hover:bg-gray-700'
+          className={`p-4 flex items-center hover:bg-gray-700 ${
+            location.pathname === '/admin/users' && 'bg-gray-700'
+          }`}
         >
           <FaUsers size={20} className='mr-3' />
           {!collapsed && <span>Manage Users</span>}
         </Link>
         <Link
           to='/admin/reports'
-          className='p-4 flex items-center hover:bg-gray-700'
+          className={`p-4 flex items-center hover:bg-gray-700 ${
+            location.pathname === '/admin/reports' && 'bg-gray-700'
+          }`}
         >
           <FaFileAlt size={20} className='mr-3' />
           {!collapsed && <span>Reports</span>}

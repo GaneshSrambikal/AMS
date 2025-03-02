@@ -10,6 +10,7 @@ import UserManagement from './UserManagement';
 import AdminReports from './AdminReports';
 
 const AdminDashboard = () => {
+  const [loading, setLoading] = useState(false);
   const { logout } = useContext(AuthContext);
   const [collapsed, setCollapsed] = useState(false);
   const { data: attendance, refetch } = useQuery('allAttendance', async () => {
@@ -31,6 +32,17 @@ const AdminDashboard = () => {
     }
   );
 
+  const sendReminder = async () => {
+    setLoading(true);
+    try {
+      await api.post('/notifications/send-reminder');
+      alert('Reminder sent to all users!');
+    } catch (error) {
+      alert('Error sending reminder.', error);
+    }
+    setLoading(false);
+  };
+  // const reminderMutation = useMutation(() => api.post('/notifications/send'))
   return (
     <div className='flex h-screen'>
       <Sidebar
@@ -52,7 +64,16 @@ const AdminDashboard = () => {
                 <h2 className='text-3xl font-bold text-gray-800 mb-6'>
                   Admin Dashboard
                 </h2>
-
+                <div>
+                  {/* 🔹 Send Reminder Button */}
+                  <button
+                    onClick={sendReminder}
+                    className='bg-red-500 text-white px-4 py-2 rounded mt-4'
+                    disabled={loading}
+                  >
+                    {loading ? 'Sending...' : 'Send Reminder'}
+                  </button>
+                </div>
                 <h3 className='mt-6 text-2xl font-semibold text-gray-700'>
                   All Attendance Records
                 </h3>

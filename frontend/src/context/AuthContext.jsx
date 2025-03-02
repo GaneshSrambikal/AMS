@@ -155,6 +155,7 @@ export const AuthProvider = ({ children }) => {
       console.log('login', data);
       localStorage.setItem('ams_user', JSON.stringify(data.user));
       localStorage.setItem('ams_token', data.token);
+      localStorage.setItem('ams_userId', data?.user?.id);
       navigate('/dashboard');
       return data; // ✅ Instead of navigating here, return the user role
     } catch (error) {
@@ -166,6 +167,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem('ams_user');
     localStorage.removeItem('ams_token');
+    localStorage.removeItem('ams_userId');
     navigate('/login');
   };
 

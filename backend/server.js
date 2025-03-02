@@ -11,10 +11,10 @@ const server = http.createServer(app);
 
 connectDB();
 
-initSocket(server);
+const io = initSocket(server);
 
 server.listen(PORT, () => {
   console.log(`listening at ${PORT}`);
 });
 
-notifyToCheckOut();
+// notifyToCheckOut();

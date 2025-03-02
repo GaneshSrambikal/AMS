@@ -8,6 +8,9 @@ body {
   font-weight: 300;
   font-style: normal;
 }
+button:hover {
+  cursor: pointer;
+}
 /* * {
   margin: 0;
   padding: 0;

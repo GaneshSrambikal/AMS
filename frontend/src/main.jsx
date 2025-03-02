@@ -10,9 +10,9 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
+    {/* <AuthProvider> */}
       <App />
-    </AuthProvider>
+    {/* </AuthProvider> */}
     <ToastContainer position='top-right' />
   </QueryClientProvider>
 );

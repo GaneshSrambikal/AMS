@@ -58,7 +58,15 @@ exports.loginUser = async (req, res) => {
       }
     }
     // Generate Token
-    const token = await generateToken(user._id, user.role);
+
+    const userSign = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      designation: user.designation,
+    };
+    const token = await generateToken(userSign);
     return res.json({
       user: {
         id: user._id,

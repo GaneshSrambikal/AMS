@@ -1,14 +1,19 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { login} = useContext(AuthContext);
+  const { loading, user, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +25,8 @@ const Login = () => {
       toast.error(error.message);
     }
   };
- 
+
+  if (loading) return <div>Loading</div>;
   return (
     <div className='flex h-screen items-center justify-center bg-gray-100 relative'>
       <div className='w-full max-w-sm bg-white p-6 rounded-lg shadow-lg relative overflow-hidden'>

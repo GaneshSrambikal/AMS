@@ -1,12 +1,26 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import AuthContext, { AuthProvider } from './context/AuthContext';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
+import Login from './pages/Login';
+import { ToastContainer } from 'react-toastify';
+import Dashboard from './pages/Dashboard';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Navbar from './components/Navbar';
+import LandingPage from './pages/LandingPage';
+import { useContext } from 'react';
+import AdminDashboard from './pages/AdminDashboard';
+import ProtectedRoutes from './routes/ProtectedRoutes';
+import PublicRoutes from './routes/PublicRoutes';
 // import { io } from 'socket.io-client';
 // import { requestPushPermission } from './firebaseConfig';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   // useEffect(() => {
   //   const socket = io('http://localhost:5000', {
@@ -25,28 +39,44 @@ function App() {
   // useEffect(() => {
   //   requestPushPermission();
   // }, []);
-  return (
-    <>
-      <div className='bg-green-100 flex justify-center border p-2 mb-2 rounded'>
-        <a href='https://vite.dev' target='_blank' className=''>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <h1 class='text-3xl font-bold underline'>Hello world!</h1>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
 
-    </>
+  // const ProtectedRoute = ({ children, role }) => {
+  //   const { user } = useContext(AuthContext);
+
+  //   if (!user) return <Navigate to='/login' />; // Redirect to login instead of '/' for clarity
+
+  //   if (role && user.role !== role) {
+  //     return <Navigate to={user?.role === 'admin' ? '/admin' : '/dashboard'} />;
+  //   }
+
+  //   return children;
+  // };
+  return (
+    <Router>
+      <Navbar />
+      {/* <Routes> */}
+      {/* <Route path='/' element={<LandingPage />} />
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/dashboard'
+          element={
+            <ProtectedRoute role='employee'>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/admin'
+          element={
+            <ProtectedRoute role='admin'>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        /> */}
+      <PublicRoutes />
+      <ProtectedRoutes />
+      {/* </Routes> */}
+    </Router>
   );
 }
 

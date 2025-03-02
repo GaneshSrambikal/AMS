@@ -16,7 +16,7 @@ const LandingPage = () => {
   return (
     <main className='bg-gray-100 text-gray-900 min-h-screen'>
       {/* Hero Section */}
-      <section className='relative h-screen flex flex-col items-center justify-center text-center bg-linear-to-r from-cyan-500 to-blue-500 text-white px-6'>
+      <section id="landing-hero" className='relative h-screen flex flex-col items-center justify-center text-center bg-linear-to-r from-cyan-500 to-blue-500 text-white px-6'>
         <h1 className='text-5xl font-extrabold leading-tight'>AMS</h1>
         <p className='mt-4 text-lg max-w-2xl'>
         Efficient and hassle-free attendance management.

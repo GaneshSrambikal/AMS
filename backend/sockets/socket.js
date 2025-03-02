@@ -1,13 +1,10 @@
 const { Server } = require('socket.io');
+const { corsOrigins } = require('../utils/corsOrigin');
 let io;
 
 const initSocket = (server) => {
   io = new Server(server, {
-    cors: {
-      origin: 'http://localhost:5173', // Allow requests from Vite frontend
-      methods: ['GET', 'POST'],
-      credentials: true,
-    },
+    cors: corsOrigins,
   });
 
   io.on('connection', (socket) => {

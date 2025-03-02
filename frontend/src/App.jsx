@@ -14,8 +14,10 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import { useContext } from 'react';
 import AdminDashboard from './pages/AdminDashboard';
-import ProtectedRoutes from './routes/ProtectedRoutes';
 import PublicRoutes from './routes/PublicRoutes';
+import EmployeeRoutes from './routes/EmployeeRoutes';
+import NotFound from './pages/NotFound';
+import ProtectedRoute from './routes/ProtectedRoute';
 // import { io } from 'socket.io-client';
 // import { requestPushPermission } from './firebaseConfig';
 
@@ -53,29 +55,38 @@ function App() {
   // };
   return (
     <Router>
-      <Navbar />
-      {/* <Routes> */}
-      {/* <Route path='/' element={<LandingPage />} />
-        <Route path='/login' element={<Login />} />
-        <Route
-          path='/dashboard'
-          element={
-            <ProtectedRoute role='employee'>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/admin'
-          element={
-            <ProtectedRoute role='admin'>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        /> */}
-      <PublicRoutes />
-      <ProtectedRoutes />
-      {/* </Routes> */}
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          {/* <Route path='/' element={<LandingPage />} /> */}
+          {/* <Route path='/login' element={<Login />} /> */}
+          {/* <Route element={<EmployeeRoutes />}> */}
+          {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+          {/* </Route> */}
+          {/* <Route path='/admin' element={<AdminDashboard />} /> */}
+          {/* <PublicRoutes /> */}
+          {/* <Route path='/*' element/> */}
+          {/* <ProtectedRoutes /> */}
+
+          {/* Public Routes */}
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/login' element={<Login />} />
+
+          {/* Protected Employee Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path='/dashboard/*' element={<Dashboard />} />
+            <Route path='/admin/*' element={<AdminDashboard />} />
+          </Route>
+
+          {/* Protected Admin Routes */}
+          {/* <Route element={<ProtectedRoute role='admin' />}>
+          <Route path='/admin' element={<AdminDashboard />} />
+        </Route> */}
+
+          {/* 404 Page */}
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }

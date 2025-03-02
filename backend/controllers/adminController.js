@@ -1,5 +1,6 @@
 const Attendance = require('../models/attendanceModel');
 const User = require('../models/userModel');
+const { format } = require('date-fns');
 // const mongoose = require('mongoose');
 
 // FIND USER BY ID
@@ -15,12 +16,28 @@ exports.findUserById = async (req, res) => {
   }
 };
 
-// GET ALL ATTENDANCE HISTORY
+// GET ALL ATTENDANCE HISTORY (Supports Date Filtering)
 exports.getAllAttendanceHistory = async (req, res) => {
   try {
-    const attendances = await Attendance.find().sort({ date: -1 });
+    const { startDate, endDate } = req.query;
+    let filter = {};
+
+    if (startDate && endDate) {
+      filter.date = {
+        $gte: format(new Date(startDate), 'yyyy-MM-dd'),
+        $lte: format(new Date(endDate), 'yyyy-MM-dd'),
+      };
+    }
+
+    const attendances = await Attendance.find(filter)
+      .sort({ date: -1 })
+    console.log(
+      'Attendance API Response:',
+      JSON.stringify(attendances, null, 2)
+    );
     return res.json(attendances);
   } catch (error) {
+    console.error('Error fetching attendance history:', error);
     return res.status(500).json({ message: 'Server Error' });
   }
 };
@@ -56,13 +73,16 @@ exports.editAttendanceById = async (req, res) => {
 // @desc   Get all employees
 // @route  GET /api/admin/users
 // @access Private (Admin)
-exports.getAllUsers = async (req, res, next) => {
+exports.getAllUsers = async (req, res) => {
   try {
-    const allUsers = await User.find({ _id: { $ne: req.user.id } }); // Find all user except current
-    res.json({ users: allUsers });
+    const { designation } = req.query;
+    const filter = designation
+      ? { role: 'employee', designation }
+      : { role: 'employee' };
+    const allUsers = await User.find(filter); // Find all user except current
+    return res.json({ users: allUsers });
   } catch (error) {
-    next(error);
-    res.status(500).json({ message: 'server error' });
+    return res.status(500).json({ message: 'server error' });
   }
 };
 

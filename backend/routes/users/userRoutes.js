@@ -1,5 +1,6 @@
 const {
   getUserAttendanceHistory,
+  getUserDetail,
 } = require('../../controllers/userController');
 const {
   protect,
@@ -16,5 +17,9 @@ router.get(
   employeeOnly,
   getUserAttendanceHistory
 );
+
+// get user detail
+// route GET /api/users/detail
+router.get('/detail', protect, employeeOnly, getUserDetail);
 
 module.exports = router;

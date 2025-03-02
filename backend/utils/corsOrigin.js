@@ -1,6 +1,6 @@
 const cors = require('cors');
 const allowedOrigins = [
-  'https://ams-6q6nn5539-ganeshsrambikals-projects.vercel.app/', // production frontend URL
+  'https://ams-nu-gold.vercel.app/', // production frontend URL
   'http://localhost:5173', // for local development
 ];
 const corsOrigins = cors({

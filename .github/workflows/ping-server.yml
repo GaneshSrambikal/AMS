@@ -1,0 +1,14 @@
+name: Keep Render Server Awake
+
+on:
+  schedule:
+    - cron: "*/1 * * * *" # Runs every 1 minute
+
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  ping-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping the server
+        run: curl -s -o /dev/null -w "%{http_code}" https://ams-nodejs-server.onrender.com || echo "Server is down!"

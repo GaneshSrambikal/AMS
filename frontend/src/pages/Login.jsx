@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -74,7 +74,7 @@ const Login = () => {
           </button>
           <div className='mt-3'>
             <p className='text-sm text-center'>
-              Don't have an account? Sign up
+              Don't have an account? <Link to='#'>Contact Admin</Link>
             </p>
           </div>
         </form>

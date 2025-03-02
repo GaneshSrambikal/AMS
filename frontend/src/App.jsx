@@ -18,6 +18,8 @@ import PublicRoutes from './routes/PublicRoutes';
 import EmployeeRoutes from './routes/EmployeeRoutes';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './routes/ProtectedRoute';
+import { NotificationProvider } from './context/notificationContext';
+import Notifications from './components/Notifications';
 // import { io } from 'socket.io-client';
 // import { requestPushPermission } from './firebaseConfig';
 
@@ -55,7 +57,9 @@ function App() {
   // };
   return (
     <Router>
+      <NotificationProvider>
       <AuthProvider>
+        {/* <Notifications /> */}
         <Navbar />
         <Routes>
           {/* <Route path='/' element={<LandingPage />} /> */}
@@ -87,6 +91,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </AuthProvider>
+      </NotificationProvider>
     </Router>
   );
 }

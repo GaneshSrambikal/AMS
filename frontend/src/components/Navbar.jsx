@@ -26,7 +26,7 @@ const Navbar = () => {
             {user?.role === 'admin' && ' (Admin)'}
           </span>
           {user.role === 'admin' && (
-            <Link to='/admin/users' className='bg-yellow-500 px-4 py-2 rounded'>
+            <Link to='/admin/users' className='bg-fuchsia-700 px-4 py-2 rounded'>
               Manage Users
             </Link>
           )}
@@ -35,7 +35,7 @@ const Navbar = () => {
               logout();
               navigate('/login');
             }}
-            className='bg-red-500 px-4 py-2 rounded hover:bg-red-600'
+            className='bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-500'
           >
             Logout
           </button>
@@ -44,7 +44,7 @@ const Navbar = () => {
         <div>
           <button
             onClick={() => navigate('/login')}
-            className='bg-red-500 px-4 py-2 rounded hover:bg-red-600'
+            className='bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-600'
           >
             login
           </button>

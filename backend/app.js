@@ -11,7 +11,7 @@ const app = express();
 // middleware setup
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors(corsOrigins));
+app.use(corsOrigins);
 
 // Routes
 app.get('/', (req, res) => {

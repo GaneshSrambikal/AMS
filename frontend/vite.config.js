@@ -6,12 +6,5 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/',
-  build: {
-    outDir: "dist",
-    assetsDir: "assets" // Ensures assets are correctly placed
-  },
-  server: {
-    strictPort: true,
-    cors: true
-  }
+  
 });

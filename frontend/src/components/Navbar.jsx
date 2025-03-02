@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <nav className='bg-blue-600 text-white p-4 flex justify-between items-center shadow-md fixed top-0 left-0 w-full'>
+    <nav className='bg-linear-to-r from-cyan-500 to-blue-500 text-white p-4 flex justify-between items-center shadow-md fixed top-0 left-0 w-full'>
       <h1 className='text-xl font-bold'>AMS</h1>
       {user ? (
         <div className='flex items-center space-x-4'>

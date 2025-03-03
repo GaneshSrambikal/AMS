@@ -31,6 +31,7 @@ exports.getAllAttendanceHistory = async (req, res) => {
 
     const attendances = await Attendance.find(filter)
       .sort({ date: -1 })
+      .populate('user', 'id name email');
     console.log(
       'Attendance API Response:',
       JSON.stringify(attendances, null, 2)

@@ -17,7 +17,7 @@ const AdminReports = () => {
       const { data } = await api.get(
         `/admin/attendance/history?startDate=${startDate}&endDate=${endDate}`
       );
-
+      console.log(data);
       return data;
     },
     { enabled: !!startDate && !!endDate } // Fetch only when both dates are set
@@ -65,15 +65,12 @@ const AdminReports = () => {
 
       {/* 🔹 Attendance History */}
       <h3 className='mt-6 text-xl font-semibold'>Attendance Records</h3>
-      <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
+      {/* <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
         <ul className='space-y-2'>
           {attendance?.map((record) => (
             <li key={record._id} className='flex justify-between border-b py-2'>
               <span className='text-gray-800'>
-                {/* {record.user && typeof record.user === 'object'
-                  ? record.user.name
-                  : 'Unknown'}{' '}
-                - {new Date(record.date).toLocaleDateString()} */}
+               
                 {record.user}
               </span>
               <span className='text-gray-600'>
@@ -85,6 +82,59 @@ const AdminReports = () => {
             </li>
           ))}
         </ul>
+      </div> */}
+      <div className='overflow-x-auto'>
+        <table className='min-w-full border-collapse border border-gray-200 bg-white shadow-lg rounded-lg'>
+          <thead className='bg-gray-100'>
+            <tr>
+              <th className='border border-gray-200 px-4 py-2'>#</th>
+              <th className='border border-gray-200 px-4 py-2'>Name</th>
+              <th className='border border-gray-200 px-4 py-2'>Date</th>
+              <th className='border border-gray-200 px-4 py-2'>Check-in</th>
+              <th className='border border-gray-200 px-4 py-2'>Check-out</th>
+              <th className='border border-gray-200 px-4 py-2'>Work Hours</th>
+            </tr>
+          </thead>
+          <tbody>
+            {attendance?.length > 0 ? (
+              attendance.map((record, index) => (
+                <tr
+                  key={record._id}
+                  className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
+                >
+                  <td className='border border-gray-200 px-4 py-2 text-center'>
+                    {index + 1}
+                  </td>
+                  <td className='border border-gray-200 px-4 py-2'>
+                    {record.user?.name || 'Unknown'}
+                  </td>
+                  <td className='border border-gray-200 px-4 py-2 text-center'>
+                    {new Date(record.date).toLocaleDateString()}
+                  </td>
+                  <td className='border border-gray-200 px-4 py-2 text-center'>
+                    {record.checkInTime
+                      ? new Date(record.checkInTime).toLocaleTimeString()
+                      : 'N/A'}
+                  </td>
+                  <td className='border border-gray-200 px-4 py-2 text-center'>
+                    {record.checkOutTime
+                      ? new Date(record.checkOutTime).toLocaleTimeString()
+                      : 'Not Checked-out'}
+                  </td>
+                  <td className='border border-gray-200 px-4 py-2 text-center'>
+                    {record.workHours || 'N/A'}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan='6' className='text-center py-4 text-gray-500'>
+                  No attendance records found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

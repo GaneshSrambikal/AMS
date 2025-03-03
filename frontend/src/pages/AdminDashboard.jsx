@@ -1,7 +1,5 @@
-import { useQuery, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import api from '../services/api';
-import { toast } from 'react-toastify';
-import { format } from 'date-fns';
 import Sidebar from '../components/Sidebar';
 import { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
@@ -15,7 +13,7 @@ const AdminDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     data: attendance,
-    refetch,
+
     isLoading,
     isError,
   } = useQuery('allAttendance', async () => {
@@ -23,19 +21,19 @@ const AdminDashboard = () => {
     return data;
   });
 
-  const editMutation = useMutation(
-    (updateData) =>
-      api.put(`/admin/attendance/edit/${updateData.id}`, updateData),
-    {
-      onSuccess: () => {
-        toast.success('Attendance updated!');
-        refetch();
-      },
-      onError: () => {
-        toast.error('Update failed!');
-      },
-    }
-  );
+  // const editMutation = useMutation(
+  //   (updateData) =>
+  //     api.put(`/admin/attendance/edit/${updateData.id}`, updateData),
+  //   {
+  //     onSuccess: () => {
+  //       toast.success('Attendance updated!');
+  //       refetch();
+  //     },
+  //     onError: () => {
+  //       toast.error('Update failed!');
+  //     },
+  //   }
+  // );
 
   const sendReminder = async () => {
     setLoading(true);
@@ -49,10 +47,10 @@ const AdminDashboard = () => {
   };
   // const reminderMutation = useMutation(() => api.post('/notifications/send'))
 
-  // ✅ Show loading message to prevent crash
+  //Show loading message to prevent crash
   if (isLoading) return <p>Loading...</p>;
 
-  // ✅ Show error message if API fails
+  // Show error message if API fails
   if (isError) return <p>Error loading attendance records.</p>;
   return (
     <div className='flex h-screen'>

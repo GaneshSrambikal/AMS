@@ -22,10 +22,10 @@ const AdminReports = () => {
     },
     { enabled: !!startDate && !!endDate } // Fetch only when both dates are set
   );
-  // ✅ Show loading message to prevent crash
+  //  Show loading message to prevent crash
   if (isLoading) return <p>Loading...</p>;
 
-  // ✅ Show error message if API fails
+  //  Show error message if API fails
   if (isError) return <p>Error loading attendance records.</p>;
   return (
     <div className='p-6'>
@@ -63,26 +63,9 @@ const AdminReports = () => {
         Download CSV
       </button>
 
-      {/* 🔹 Attendance History */}
+      {/*  Attendance History */}
       <h3 className='mt-6 text-xl font-semibold'>Attendance Records</h3>
-      {/* <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
-        <ul className='space-y-2'>
-          {attendance?.map((record) => (
-            <li key={record._id} className='flex justify-between border-b py-2'>
-              <span className='text-gray-800'>
-               
-                {record.user}
-              </span>
-              <span className='text-gray-600'>
-                Check-in: {record.checkInTime}
-              </span>
-              <span className='text-gray-600'>
-                Check-out: {record.checkOutTime || 'Not Checked-out'}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+
       <div className='overflow-x-auto'>
         <table className='min-w-full border-collapse border border-gray-200 bg-white shadow-lg rounded-lg'>
           <thead className='bg-gray-100'>

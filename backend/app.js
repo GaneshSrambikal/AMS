@@ -14,10 +14,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(corsOrigins);
 app.use(express.urlencoded({ extended: false }));
-// Routes
-// app.get('/', (req, res) => {
-//   return res.json({ message: 'Server started. Use /api endpoints to access.' });
-// });
+
 
 app.get('/api', (req, res) => {
   res.json({ message: { author: 'Ganesh Srambikal' } });

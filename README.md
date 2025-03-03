@@ -23,6 +23,9 @@ Also able to export records into pdf and csv formats.
 
 Employees can login and check-in/check-out there attendances.
 
+## DEMO VIDEO
+- [Video Link](https://drive.google.com/drive/folders/1P78HxgW_NpEc71CM2J8bzMVbH3o108IS)
+
 ## Packages Used
 
 **Frontend:**

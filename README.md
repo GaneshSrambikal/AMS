@@ -26,6 +26,10 @@ Employees can login and check-in/check-out there attendances.
 ## DEMO VIDEO
 - [Video Link](https://drive.google.com/drive/folders/1P78HxgW_NpEc71CM2J8bzMVbH3o108IS)
 
+## Admin login
+email:kw@admin.com
+password:123456
+
 ## Packages Used
 
 **Frontend:**

@@ -12,11 +12,7 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    {/* <NotificationProvider> */}
-    {/* <Notifications /> */}
     <App />
-    {/* </NotificationProvider> */}
-    {/* </AuthProvider> */}
     <ToastContainer position='top-right' />
   </QueryClientProvider>
 );

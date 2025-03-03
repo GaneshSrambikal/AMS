@@ -3,7 +3,7 @@ import autoTable from 'jspdf-autotable';
 import Papa from 'papaparse';
 import { format } from 'date-fns';
 
-// 🔹 Generate PDF Report
+//  Generate PDF Report
 export const generatePDFReport = (attendanceData) => {
   const doc = new jsPDF();
   doc.setFontSize(16);
@@ -29,7 +29,7 @@ export const generatePDFReport = (attendanceData) => {
   doc.save(`attendance-report-${Date.now()}.pdf`);
 };
 
-// 🔹 Generate CSV Report
+//  Generate CSV Report
 export const generateCSVReport = (attendanceData) => {
   const csvData = attendanceData.map((record) => ({
     Name: record.user.name,

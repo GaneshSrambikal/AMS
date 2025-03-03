@@ -93,30 +93,7 @@ const EmpDashboard = () => {
         <h3 className='mt-6 text-2xl font-semibold text-gray-700'>
           Attendance History
         </h3>
-        {/* <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
-          <ul className='space-y-2'>
-            {data?.attendances?.map((record) => (
-              <li
-                key={record._id}
-                className='flex justify-between border-b py-2'
-              >
-                <span className='text-gray-800'>
-                  {format(new Date(record.date), 'yyyy-MM-dd')}
-                </span>
-                <span className='text-gray-600'>
-                  {' '}
-                  Check-in: {format(new Date(record.checkInTime), 'hh:mm a')}
-                </span>
-                <span className='text-gray-600'>
-                  Check-out:{' '}
-                  {record.checkOutTime
-                    ? format(new Date(record.checkOutTime), 'hh:mm a')
-                    : 'Not Checked-out'}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div> */}
+
         <div className='overflow-x-auto'>
           <table className='min-w-full border-collapse border border-gray-200 bg-white shadow-lg rounded-lg'>
             <thead className='bg-gray-100'>

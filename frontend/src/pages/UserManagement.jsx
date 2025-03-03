@@ -3,7 +3,6 @@ import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import { addUser, deleteUser, fetchUsers } from '../services/api';
 const UserManagement = () => {
-  //   const { data, refetch } = useQuery('users', fetchUsers);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

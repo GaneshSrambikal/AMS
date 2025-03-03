@@ -1,7 +1,6 @@
 const Attendance = require('../models/attendanceModel');
 const User = require('../models/userModel');
 const { format } = require('date-fns');
-// const mongoose = require('mongoose');
 
 // FIND USER BY ID
 exports.findUserById = async (req, res) => {

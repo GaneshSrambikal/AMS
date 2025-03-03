@@ -9,7 +9,7 @@ exports.sendNotification = async (req, res) => {
 
     const notification = await Notification.create({ user: userId, message });
 
-    // 🔹 Send real-time notification
+    //  Send real-time notification
     getIo().to(userId).emit('newNotification', notification);
 
     res.status(201).json({ message: 'Notification sent!' });
@@ -54,7 +54,7 @@ exports.sendReminderToAll = async (req, res) => {
       });
       notifications.push(notification);
 
-      // 🔹 Send real-time notification via WebSocket
+      //  Send real-time notification via WebSocket
       getIo().to(user._id.toString()).emit('newNotification', notification);
     }
 

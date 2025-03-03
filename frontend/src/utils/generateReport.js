@@ -11,7 +11,7 @@ export const generatePDFReport = (attendanceData) => {
 
   const tableData = attendanceData.map((record, index) => [
     index + 1,
-    record.user,
+    record.user.name,
     format(record.date, 'yyy-MM-dd'),
     format(record.checkInTime, 'hh:mm a'),
     record.checkOutTime
@@ -22,7 +22,7 @@ export const generatePDFReport = (attendanceData) => {
 
   autoTable(doc, {
     startY: 30,
-    head: [['#', 'EmpID', 'Date', 'Check-in', 'Check-out', 'Work Hours']],
+    head: [['#', 'Name', 'Date', 'Check-in', 'Check-out', 'Work Hours']],
     body: tableData,
   });
 
@@ -32,8 +32,8 @@ export const generatePDFReport = (attendanceData) => {
 // 🔹 Generate CSV Report
 export const generateCSVReport = (attendanceData) => {
   const csvData = attendanceData.map((record) => ({
-    EmpId: record.user,
-    Date: format(new Date(record.date), 'yyyy-MM-dd'),
+    Name: record.user.name,
+    Date: new Date(record.date).toLocaleDateString(),
     'Check-in': format(record.checkInTime, 'hh:mm a'),
     'Check-out': record.checkOutTime
       ? format(record.checkOutTime, 'hh:mm a')

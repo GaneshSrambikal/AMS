@@ -13,7 +13,12 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(false);
   const { logout } = useContext(AuthContext);
   const [collapsed, setCollapsed] = useState(false);
-  const { data: attendance, refetch } = useQuery('allAttendance', async () => {
+  const {
+    data: attendance,
+    refetch,
+    isLoading,
+    isError,
+  } = useQuery('allAttendance', async () => {
     const { data } = await api.get('/admin/attendance/history');
     return data;
   });
@@ -43,6 +48,12 @@ const AdminDashboard = () => {
     setLoading(false);
   };
   // const reminderMutation = useMutation(() => api.post('/notifications/send'))
+
+  // ✅ Show loading message to prevent crash
+  if (isLoading) return <p>Loading...</p>;
+
+  // ✅ Show error message if API fails
+  if (isError) return <p>Error loading attendance records.</p>;
   return (
     <div className='flex h-screen'>
       <Sidebar
@@ -77,7 +88,7 @@ const AdminDashboard = () => {
                 <h3 className='mt-6 text-2xl font-semibold text-gray-700'>
                   All Attendance Records
                 </h3>
-                <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
+                {/* <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
                   <ul className='space-y-2'>
                     {attendance?.map((record) => (
                       <li
@@ -110,6 +121,78 @@ const AdminDashboard = () => {
                       </li>
                     ))}
                   </ul>
+                </div> */}
+                <div className='overflow-x-auto'>
+                  <table className='min-w-full border-collapse border border-gray-200 bg-white shadow-lg rounded-lg'>
+                    <thead className='bg-gray-100'>
+                      <tr>
+                        <th className='border border-gray-200 px-4 py-2'>#</th>
+                        <th className='border border-gray-200 px-4 py-2'>
+                          Name
+                        </th>
+                        <th className='border border-gray-200 px-4 py-2'>
+                          Date
+                        </th>
+                        <th className='border border-gray-200 px-4 py-2'>
+                          Check-in
+                        </th>
+                        <th className='border border-gray-200 px-4 py-2'>
+                          Check-out
+                        </th>
+                        <th className='border border-gray-200 px-4 py-2'>
+                          Work Hours
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {attendance?.length > 0 ? (
+                        attendance.map((record, index) => (
+                          <tr
+                            key={record._id}
+                            className={
+                              index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                            }
+                          >
+                            <td className='border border-gray-200 px-4 py-2 text-center'>
+                              {index + 1}
+                            </td>
+                            <td className='border border-gray-200 px-4 py-2'>
+                              {record.user?.name || 'Unknown'}
+                            </td>
+                            <td className='border border-gray-200 px-4 py-2 text-center'>
+                              {new Date(record.date).toLocaleDateString()}
+                            </td>
+                            <td className='border border-gray-200 px-4 py-2 text-center'>
+                              {record.checkInTime
+                                ? new Date(
+                                    record.checkInTime
+                                  ).toLocaleTimeString()
+                                : 'N/A'}
+                            </td>
+                            <td className='border border-gray-200 px-4 py-2 text-center'>
+                              {record.checkOutTime
+                                ? new Date(
+                                    record.checkOutTime
+                                  ).toLocaleTimeString()
+                                : 'Not Checked-out'}
+                            </td>
+                            <td className='border border-gray-200 px-4 py-2 text-center'>
+                              {record.workHours || 'N/A'}
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td
+                            colSpan='6'
+                            className='text-center py-4 text-gray-500'
+                          >
+                            No attendance records found.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
               </>
             }

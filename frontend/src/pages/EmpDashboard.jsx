@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import api from '../services/api';
 import { toast } from 'react-toastify';
-import { format } from 'date-fns';
 import AuthContext from '../context/AuthContext';
 import Notifications from '../components/Notifications';
 import { io } from 'socket.io-client';
@@ -16,7 +15,7 @@ const EmpDashboard = () => {
     'attendanceHistory',
     async () => {
       const { data } = await api.get('/users/attendance/history');
-      // console.log(data);
+      console.log(data);
       return data;
     }
   );
@@ -94,7 +93,7 @@ const EmpDashboard = () => {
         <h3 className='mt-6 text-2xl font-semibold text-gray-700'>
           Attendance History
         </h3>
-        <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
+        {/* <div className='mt-4 bg-white shadow-lg rounded-lg p-4'>
           <ul className='space-y-2'>
             {data?.attendances?.map((record) => (
               <li
@@ -117,6 +116,56 @@ const EmpDashboard = () => {
               </li>
             ))}
           </ul>
+        </div> */}
+        <div className='overflow-x-auto'>
+          <table className='min-w-full border-collapse border border-gray-200 bg-white shadow-lg rounded-lg'>
+            <thead className='bg-gray-100'>
+              <tr>
+                <th className='border border-gray-200 px-4 py-2'>#</th>
+                <th className='border border-gray-200 px-4 py-2'>Date</th>
+                <th className='border border-gray-200 px-4 py-2'>Check-in</th>
+                <th className='border border-gray-200 px-4 py-2'>Check-out</th>
+                <th className='border border-gray-200 px-4 py-2'>Work Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.attendances?.length > 0 ? (
+                data?.attendances?.map((record, index) => (
+                  <tr
+                    key={record._id}
+                    className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
+                  >
+                    <td className='border border-gray-200 px-4 py-2 text-center'>
+                      {index + 1}
+                    </td>
+
+                    <td className='border border-gray-200 px-4 py-2 text-center'>
+                      {new Date(record.date).toLocaleDateString()}
+                    </td>
+                    <td className='border border-gray-200 px-4 py-2 text-center'>
+                      {record.checkInTime
+                        ? new Date(record.checkInTime).toLocaleTimeString()
+                        : 'N/A'}
+                    </td>
+                    <td className='border border-gray-200 px-4 py-2 text-center'>
+                      {record.checkOutTime
+                        ? new Date(record.checkOutTime).toLocaleTimeString()
+                        : 'Not Checked-out'}
+                    </td>
+                    <td className='border border-gray-200 px-4 py-2 text-center'>
+                      {record.workHours || 'N/A'}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan='6' className='text-center py-4 text-gray-500'>
+                    No attendance records found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

@@ -27,9 +27,11 @@ exports.getUserDetail = async (req, res, next) => {
 
 exports.getUserAttendanceHistory = async (req, res) => {
   try {
-    const attendances = await Attendance.find({ user: req.user.id }).sort({
-      date: -1,
-    });
+    const attendances = await Attendance.find({ user: req.user.id })
+      .sort({
+        date: -1,
+      })
+      .populate('user', 'name email');
     let totalWorkHours = 0;
     for (let attendance of attendances) {
       totalWorkHours += attendance.workHours;

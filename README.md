@@ -27,7 +27,7 @@ Employees can login and check-in/check-out there attendances.
 - [Video Link](https://drive.google.com/drive/folders/1P78HxgW_NpEc71CM2J8bzMVbH3o108IS)
 
 ## Admin login
-email:kw@admin.com
+email:sb@gmail.com
 password:123456
 
 ## Packages Used

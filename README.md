@@ -26,6 +26,9 @@ Employees can login and check-in/check-out there attendances.
 ## DEMO VIDEO
 - [Video Link](https://drive.google.com/drive/folders/1P78HxgW_NpEc71CM2J8bzMVbH3o108IS)
 
+
+## ScreenShots
+- [Pages](https://www.behance.net/gallery/220659289/AMS-Attendance-Management-System)
 ## Packages Used
 
 **Frontend:**

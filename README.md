@@ -48,6 +48,7 @@ Employees can login and check-in/check-out there attendances.
 | jwt-decode       | https://www.npmjs.com/package/jwt-decode       |
 | react-icons      | https://www.npmjs.com/package/react-icons      |
 | react-router-dom | https://www.npmjs.com/package/react-router-dom |
+| react query      | https://www.npmjs.com/package/react-query             |
 
 **Backend:**
 |Packages | npm links |
@@ -57,6 +58,7 @@ Employees can login and check-in/check-out there attendances.
 |mongoose|https://www.npmjs.com/package/mongoose|
 |jsonwebtoken|https://www.npmjs.com/package/jsonwebtoken|
 |bcryptjs|https://www.npmjs.com/package/bcryptjs|
+|socktet.io| https://www.npmjs.com/package/socket.io|
 
 ## Environment Variables
 

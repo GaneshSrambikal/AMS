@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "144fcb98-66f3-4f52-bb5c-ddbe37be8a87",
+		"name": "ams",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19069280"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "allAttendanceHistory(Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "register(AdminOnly)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kennedy williams\",\r\n    \"email\": \"kw@admin.com\",\r\n    \"password\": \"123456\",\r\n    \"designation\": \"devops\",\r\n    \"datalog\":\"weqefaffaaf\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers(Admin only)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUserById(AdminOnly)",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "editAttendanceById(Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"checkInTime\": \"2025-02-28T10:10:13.784Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/attendance/edit/67c1dfe5ed48b551d96b6372",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"attendance",
+								"edit",
+								"67c1dfe5ed48b551d96b6372"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sandy B\",\r\n    \"email\": \"sb@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"designation\": \"devops\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/users/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"users",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser (Admin only)",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "editUser (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/users/edit/67c40a51621d5886492b6849",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"users",
+								"edit",
+								"67c40a51621d5886492b6849"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "AttendanceHistory(Employee Only)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/attendance/history",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"attendance",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/attendance/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance",
+								"check-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkOut",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/attendance/check-out",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserDetail",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "sendNotifications",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"67c178fcfc1bb5a2b5f501da\",\r\n    \"message\": \"This is test notification\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/notifications/send",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notifications",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNotifications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/notifications/67c178fcfc1bb5a2b5f501da",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notifications",
+						"67c178fcfc1bb5a2b5f501da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "markSeenNotification",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzE3OGZjZmMxYmI1YTJiNWY1MDFkYSIsIm5hbWUiOiJqb2huIGRvZSIsImVtYWlsIjoiZ2FuZXNoLnNyYW1iaWthbEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJkZXNpZ25hdGlvbiI6ImRldm9wcyIsImlhdCI6MTc0MDk2Mjc4NCwiZXhwIjoxNzQwOTY2Mzg0fQ.TvqjBjZiaxqGpkAXFVozzo1221ibGIszuM4ry6-G16Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		}
+	]
+}

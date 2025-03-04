@@ -35,6 +35,9 @@ Employees can login and check-in/check-out there attendances.
 ## ScreenShots
 - [Pages](https://www.behance.net/gallery/220659289/AMS-Attendance-Management-System)
 
+## BLOG
+- [Blog on DEV.to](https://dev.to/ganeshsrambikal/building-a-real-time-attendance-management-system-with-websockets-1jeb)
+
 ## Packages Used
 
 **Frontend:**

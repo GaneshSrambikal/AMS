@@ -38,6 +38,10 @@ Employees can login and check-in/check-out there attendances.
 ## BLOG
 - [Blog on DEV.to](https://dev.to/ganeshsrambikal/building-a-real-time-attendance-management-system-with-websockets-1jeb)
 
+## HOSTINGS
+- Backend: [Render](https://render.com/)
+- Frontend: [Vercel](https://vercel.com/)
+
 ## Packages Used
 
 **Frontend:**

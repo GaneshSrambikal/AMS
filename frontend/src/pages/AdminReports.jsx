@@ -5,7 +5,7 @@ import { generatePDFReport, generateCSVReport } from '../utils/generateReport';
 
 const AdminReports = () => {
   const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [endDate, setEndDate] = useState(new Date());
 
   const {
     data: attendance,
@@ -37,12 +37,17 @@ const AdminReports = () => {
           type='date'
           className='p-2 border rounded'
           value={startDate}
+          min={new Date('2025-03-01').toISOString().split('T')[0]}
+          max={new Date().toISOString().split('T')[0]}
           onChange={(e) => setStartDate(e.target.value)}
+          defaultValue={new Date('2025-03-01').toISOString().split('T')[0]}
         />
         <input
           type='date'
           className='p-2 border rounded'
           value={endDate}
+          min={new Date('2025-03-01').toISOString().split('T')[0]}
+          max={new Date().toISOString().split('T')[0]}
           onChange={(e) => setEndDate(e.target.value)}
         />
       </div>

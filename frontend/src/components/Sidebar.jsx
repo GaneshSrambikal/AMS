@@ -9,7 +9,7 @@ import {
 
 const Sidebar = ({ onLogout, collapsed, setCollapsed }) => {
   const location = useLocation();
-  console.log('location', location.pathname);
+  // console.log('location', location.pathname);
   return (
     <div
       className={`mt-18 h-[90vh] bg-gray-900 text-white fixed left-0 top-0 z-50 ${

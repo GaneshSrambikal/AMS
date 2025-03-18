@@ -21,20 +21,6 @@ const AdminDashboard = () => {
     return data;
   });
 
-  // const editMutation = useMutation(
-  //   (updateData) =>
-  //     api.put(`/admin/attendance/edit/${updateData.id}`, updateData),
-  //   {
-  //     onSuccess: () => {
-  //       toast.success('Attendance updated!');
-  //       refetch();
-  //     },
-  //     onError: () => {
-  //       toast.error('Update failed!');
-  //     },
-  //   }
-  // );
-
   const sendReminder = async () => {
     setLoading(true);
     try {
@@ -45,7 +31,6 @@ const AdminDashboard = () => {
     }
     setLoading(false);
   };
-  // const reminderMutation = useMutation(() => api.post('/notifications/send'))
 
   //Show loading message to prevent crash
   if (isLoading) return <p>Loading...</p>;

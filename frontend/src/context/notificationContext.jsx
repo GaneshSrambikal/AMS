@@ -1,17 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import api from '../services/api';
-import AuthContext from './AuthContext';
 
 const NotificationContext = createContext();
 
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
-  
-  const id = localStorage.getItem('ams_userId');
-  
 
- 
+  const id = localStorage.getItem('ams_userId');
+
   useEffect(() => {
     if (!id) return;
     const socket = io(import.meta.env.VITE_BACKEND_URL, {

@@ -57,6 +57,11 @@ const UserManagement = () => {
       toast.error('Failed to delete employee');
     },
   });
+  const handleAddEmp = () => {
+    if (name && email && password && designation) {
+      addMutation.mutate({ name, email, password, designation });
+    }
+  };
   return (
     <div className='p-6 bg-gray-100 size-auto'>
       <h2 className='text-3xl font-bold text-gray-800 mb-6'>User Management</h2>
@@ -93,9 +98,7 @@ const UserManagement = () => {
             onChange={(e) => setDesignation(e.target.value)}
           />
           <button
-            onClick={() =>
-              addMutation.mutate({ name, email, password, designation })
-            }
+            onClick={handleAddEmp}
             className='mt-2 bg-blue-500 text-white p-2 rounded w-full'
           >
             Add
